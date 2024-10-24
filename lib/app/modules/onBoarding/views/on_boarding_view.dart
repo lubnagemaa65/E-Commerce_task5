@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart'; // Import the Liquid Swipe package
 import '../controllers/on_boarding_controller.dart';
+import 'package:lottie/lottie.dart';
+
 
 class OnBoardingView extends GetView<OnBoardingController> {
 
@@ -25,7 +27,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
+                      Lottie.asset(
                         onBoardingItem.image,
                         fit: BoxFit.contain,
                         height: 200, // Adjust height as needed
