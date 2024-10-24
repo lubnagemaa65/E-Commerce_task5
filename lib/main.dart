@@ -9,7 +9,7 @@ void main() {
     
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Application",
+      title: "City Center Shop App",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

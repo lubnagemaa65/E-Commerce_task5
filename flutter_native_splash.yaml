@@ -1,4 +1,4 @@
-image: assets/images/logo.png
+image: "assets/images/logo.PNG"
 color: "42A5F5"
 android: true
 ios: true
