@@ -1,0 +1,4 @@
+image: assets/images/logo.png
+color: "42A5F5"
+android: true
+ios: true
