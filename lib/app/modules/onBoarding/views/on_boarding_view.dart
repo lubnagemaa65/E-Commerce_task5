@@ -18,7 +18,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
           final onBoardingItem = entry.value;
 
           return Container(
-            color:_getColorForIndex(index), 
+            color:controller.getColorForIndex(index),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -67,19 +67,5 @@ class OnBoardingView extends GetView<OnBoardingController> {
     );
   }
 
- Color _getColorForIndex(int index) {
-    // Define your color logic here based on the index
-    // For example, you can return different colors based on the index
-    // This is just a sample logic, you can customize it as needed
-    if (index  == 0) {
-      return ColorApp.primaryColor;
-    } else
-    if(index==1) {
-      return ColorApp.secondColor;
-    }
-    else{
-      return ColorApp.thirdColor;
-    }
-  }
-
+ 
 }
