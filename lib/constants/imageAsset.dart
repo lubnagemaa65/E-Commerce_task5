@@ -9,6 +9,12 @@ static const String lottieonboarding1 = 'assets/lottie/Animation1.json';
 static const String lottieonboarding2 = 'assets/lottie/Animation2.json';
 static const String lottieonboarding3 = 'assets/lottie/Animation3.json';
 
+static const String loading = 'assets/lottie/loading.json';
+static const String offline = 'assets/lottie/offline.json';
+static const String server = 'assets/lottie/server.json';
+
+
+
 
 
 }

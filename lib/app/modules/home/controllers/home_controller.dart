@@ -1,23 +1,12 @@
-import 'package:get/get.dart';
+
+import 'package:get/state_manager.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+final selectedTabIndex = 0.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  HomeController() : super();
+
+  void changeTabIndex(int index) {
+    selectedTabIndex.value = index;
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

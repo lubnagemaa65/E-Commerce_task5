@@ -1,24 +1,60 @@
+import 'package:e_commerce_task5/app/modules/profile/views/profile_view.dart';
+import 'package:e_commerce_task5/app/modules/settings/views/settings_view.dart';
+import 'package:e_commerce_task5/constants/appColors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+  HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+    PersistentTabController _controller =
+        PersistentTabController(initialIndex: 0);  
+
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: [
+        Scaffold(
+          appBar: AppBar(
+            title: const Text('Home'),
+            centerTitle: true,
+          ),
+          body: Center(
+            child: Text('Welcome Home'),
+          ),
         ),
-      ),
+        ProfileView(),
+        SettingsView(),
+      ],
+      items: [
+        PersistentBottomNavBarItem(
+          icon: Icon(Icons.home),
+          title: 'Home',
+          activeColorPrimary: ColorApp.primaryColor,
+          inactiveColorPrimary: Colors.grey,
+        ),
+        PersistentBottomNavBarItem(
+          icon: Icon(Icons.person),
+          title: 'Profile',
+          activeColorPrimary: ColorApp.secondColor,
+          inactiveColorPrimary: Colors.grey,
+        ),
+        PersistentBottomNavBarItem(
+          icon: Icon(Icons.settings),
+          title: 'Settings',
+          activeColorPrimary: ColorApp.thirdColor,
+          inactiveColorPrimary: Colors.grey,
+        ),
+      ],
+       // selectedIndex:controller.initialIndex, // Set the initial selected tab index
+      onItemSelected: (index) {
+        controller.changeTabIndex(index);
+      },
     );
   }
 }
