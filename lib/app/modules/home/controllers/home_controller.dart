@@ -1,11 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'package:get/state_manager.dart';
+class HomeController extends GetxController with SingleGetTickerProviderMixin {
+  final selectedTabIndex = 0.obs;
+  late AnimationController
+      aniController; // Define aniController as a late field
 
-class HomeController extends GetxController {
-final selectedTabIndex = 0.obs;
+  @override
+  void onInit() {
+    super.onInit();
+  
+  }
 
-  HomeController() : super();
 
+
+  // Function to change the tab index
   void changeTabIndex(int index) {
     selectedTabIndex.value = index;
   }

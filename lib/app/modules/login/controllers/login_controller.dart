@@ -1,3 +1,4 @@
+import 'package:e_commerce_task5/app/modules/auth/controllers/auth_controller.dart';
 import 'package:e_commerce_task5/app/routes/app_pages.dart';
 import 'package:e_commerce_task5/core/classes/statusRequest.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,15 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
+     final nameController = Get.find<TextEditingController>();
+  final emailController =
+      Get.find<TextEditingController>();
+  final passwordController =
+      Get.find<TextEditingController>();
+
+  // Access other controllers
+  final authController = Get.find<AuthController>();
+  final LoginController = Get.find<LoginControllerImp>();
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   late TextEditingController email;
@@ -42,6 +52,7 @@ class LoginControllerImp extends LoginController {
   void onInit() {
     email = TextEditingController();
     password = TextEditingController();
+    
     super.onInit();
   }
 
@@ -54,11 +65,11 @@ class LoginControllerImp extends LoginController {
 
   @override
   void goToForgetPassword() {
-    Get.toNamed(Routes.FORGETPASSWORD);
+    Get.toNamed('/forgetPassword');
   }
 
   @override
   void goToSignUp() {
-    Get.offNamed(Routes.SIGNUP);
+    Get.toNamed('/signup');
   }
 }

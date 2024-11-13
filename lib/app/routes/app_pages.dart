@@ -1,5 +1,12 @@
+import 'package:e_commerce_task5/app/modules/card/bindings/card_binding.dart';
+import 'package:e_commerce_task5/app/modules/card/views/card_view.dart';
 import 'package:get/get.dart';
 
+import '../modules/auth/bindings/auth_binding.dart';
+import '../modules/auth/views/auth_view.dart';
+
+import '../modules/favorites/bindings/favorites_binding.dart';
+import '../modules/favorites/views/favorites_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -12,6 +19,8 @@ import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
 
 part 'app_routes.dart';
 
@@ -23,7 +32,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () =>  HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -33,12 +42,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      page: () =>  SignupView(),
+      page: () => SignupView(),
       binding: SignupBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () =>  LoginView(),
+      page: () => LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
@@ -50,6 +59,26 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.AUTH,
+      page: () => AuthView(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => SplashView(),
+      binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.FAVORITES,
+      page: () =>  FavoritesView(),
+      binding: FavoritesBinding(),
+    ),
+    GetPage(
+      name: _Paths.cart,
+      page: () =>  CartView(),
+      binding: CartBinding(),
     ),
   ];
 }

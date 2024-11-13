@@ -2,28 +2,36 @@ import 'package:e_commerce_task5/app/data/static.dart';
 import 'package:e_commerce_task5/constants/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
 
 abstract class OnBoardingController extends GetxController {
   next(); //to swip between onboarding pages
   onPageChanged(int index);
-   //to link the dot bar with suitable page
    getColorForIndex(int index);
+    bool isLastPage();
 }
 
 class OnBoardingControllerImp extends OnBoardingController {
-  late PageController pageController;
   int currentPage = 0;
-  @override
-  next() {
-    currentPage++;
-    pageController.animateToPage(currentPage,
-        duration: const Duration(microseconds: 900), curve: Curves.easeInOut);
+  late PageController pageController;
+  final GetStorage storage = GetStorage();
+  final String onboardedKey = 'hasOnboarded';
+  OnBoardingControllerImp();
 
-    if (currentPage > onBoardingList.length - 1) {
-     
+  @override
+   next() {
+    if (isLastPage()) {
+      // Set onboarding as completed
+      storage.write(onboardedKey, true);
+
+      // Navigate to the login page
+      Get.offAllNamed('/login');
     } else {
+      // Increment the page index and animate to the next page
+      currentPage++;
       pageController.animateToPage(currentPage,
-          duration: const Duration(microseconds: 900), curve: Curves.easeInOut);
+          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
     }
   }
 Color getColorForIndex(int index) {
@@ -48,6 +56,20 @@ Color getColorForIndex(int index) {
   @override
   void onInit() {
     pageController = PageController();
+
+    // Check if onboarding has been completed
+    if (storage.read(onboardedKey) == true) {
+      // If completed, go directly to the login page
+      Get.offAllNamed('/login');
+    }
+
     super.onInit();
+  }
+  
+  @override
+  bool isLastPage() {
+    return currentPage == onBoardingList.length - 1;
+    
+
   }
 }

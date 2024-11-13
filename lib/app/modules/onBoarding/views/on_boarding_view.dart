@@ -1,12 +1,17 @@
-import 'package:e_commerce_task5/app/data/static.dart';
-import 'package:e_commerce_task5/app/modules/onBoarding/views/custom_button_view.dart';
+import 'package:e_commerce_task5/app/modules/onBoarding/controllers/on_boarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import '../controllers/on_boarding_controller.dart';
 import 'package:lottie/lottie.dart';
 
+import 'package:e_commerce_task5/app/data/static.dart';
+import 'package:e_commerce_task5/app/modules/onBoarding/views/custom_button_view.dart';
+
+
 class OnBoardingView extends GetView<OnBoardingController> {
+  final storage=GetStorage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +33,8 @@ class OnBoardingView extends GetView<OnBoardingController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height: constraints.maxHeight * 0.3,  
-                            width:  constraints.maxWidth,
+                            height: constraints.maxHeight * 0.3,
+                            width: constraints.maxWidth,
                             child: Lottie.asset(
                               onBoardingItem.image,
                               fit: BoxFit.contain,
@@ -57,9 +62,9 @@ class OnBoardingView extends GetView<OnBoardingController> {
                       Expanded(
                         flex: 1,
                         child: Column(
-                          children: const [
-                            Spacer(),
-                            CustomButtonView(),
+                          children: [
+                            const Spacer(),
+                            CustomButtonView(storage: storage,),
                           ],
                         ),
                       ),

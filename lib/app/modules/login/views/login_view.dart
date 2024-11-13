@@ -1,4 +1,5 @@
-import 'package:e_commerce_task5/app/modules/login/controllers/login_controller.dart';
+import 'package:e_commerce_task5/app/modules/auth/controllers/auth_controller.dart';
+
 import 'package:e_commerce_task5/constants/appColors.dart';
 import 'package:e_commerce_task5/core/classes/handlingDataView.dart';
 import 'package:e_commerce_task5/widgets/auth/customButtonAuth.dart';
@@ -10,10 +11,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../controllers/login_controller.dart';
+
 class LoginView extends GetView<LoginControllerImp> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final LoginControllerImp controller = Get.find();
+
+  // Access other controllers
+final authController = Get.find<AuthController>();
 
   LoginView({Key? key});
 
@@ -92,8 +97,7 @@ class LoginView extends GetView<LoginControllerImp> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           // If the form is valid, you can proceed with your logic
-                          Get.toNamed('/home');
-                        }
+                      authController.login(passwordController.text);                        }
                       },
                     ),
                     const SizedBox(height: 40),
